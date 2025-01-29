@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="flex flex-col h-screen">
         <Header />
-        <div className="grid grid-cols-[14rem_1fr] flex-1 gap-x-10 mt-8 mr-10">
+        <div className="grid grid-cols-[14rem_1fr] flex-1 gap-x-[70px] mt-8 mr-[70px]">
           <SideNav />
           {children}
         </div>

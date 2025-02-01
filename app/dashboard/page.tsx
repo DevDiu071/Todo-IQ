@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import friend1 from "@/public/friend-1.png";
-import cardImg from "@/public/card-img.png";
+import cardImg from "@/public/cardImg.png";
 
 export default function page() {
   return (
@@ -42,35 +42,50 @@ export default function page() {
             <button>Add task</button>
           </div>
 
-          <div className="flex items-start border p-2 rounded-md">
-            <svg
-              width="14"
-              height="15"
-              viewBox="0 0 14 15"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1 7.67126C1 9.26256 1.63214 10.7887 2.75736 11.9139C3.88258 13.0391 5.4087 13.6713 7 13.6713C8.5913 13.6713 10.1174 13.0391 11.2426 11.9139C12.3679 10.7887 13 9.26256 13 7.67126C13 6.07997 12.3679 4.55384 11.2426 3.42862C10.1174 2.30341 8.5913 1.67126 7 1.67126C5.4087 1.67126 3.88258 2.30341 2.75736 3.42862C1.63214 4.55384 1 6.07997 1 7.67126Z"
-                stroke="#F21E1E"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-            <div className="flex">
-              <div>
-                <p>Attend Nischal’s Birthday Party</p>
+          <div className="border-2 p-3 rounded-2xl mt-4">
+            <div className="flex items-start gap-x-2 ">
+              <svg
+                className="w-6 h-6"
+                viewBox="0 0 14 15"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 7.67126C1 9.26256 1.63214 10.7887 2.75736 11.9139C3.88258 13.0391 5.4087 13.6713 7 13.6713C8.5913 13.6713 10.1174 13.0391 11.2426 11.9139C12.3679 10.7887 13 9.26256 13 7.67126C13 6.07997 12.3679 4.55384 11.2426 3.42862C10.1174 2.30341 8.5913 1.67126 7 1.67126C5.4087 1.67126 3.88258 2.30341 2.75736 3.42862C1.63214 4.55384 1 6.07997 1 7.67126Z"
+                  stroke="#F21E1E"
+                  strokeWidth="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              <div className="grid grid-cols-[5fr_1fr] gap-x-12 items-end">
+                <div>
+                  <p className="text-xl mb-1 font-semibold">
+                    Attend Nischal’s Birthday Party
+                  </p>
+                  <p className="mb-3">
+                    Buy gifts on the way and pick up cake from the bakery. (6 PM
+                    | Fresh Elements).....
+                  </p>
+                </div>
+                <Image src={cardImg} alt="card-img" className="" />
+              </div>
+            </div>
+            <div className="mt-4 ml-4 flex items-center justify-between">
+              <div className="flex items-center gap-x-4">
                 <p>
-                  Buy gifts on the way and pick up cake from the bakery. (6 PM |
-                  Fresh Elements).....
+                  Priority:{" "}
+                  <span className="text-very-light-blue">Moderate</span>
+                </p>
+                <p>
+                  Status: <span className="text-red">Not started</span>
                 </p>
               </div>
-              <Image src={cardImg} alt="card-img" />
+              <p>Created on: 18th/02/2025</p>
             </div>
           </div>
-          <p>This is another one mr madiw maijodsfdsfsdf</p>
         </div>
+
         <div>right</div>
       </div>
     </div>

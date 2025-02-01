@@ -14,6 +14,7 @@ export default {
         red: "#FF6767",
         white: "#F8F8FB",
         "light-blue": "#3ABEFF",
+        "very-light-blue": "#42ADE2",
       },
     },
   },

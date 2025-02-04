@@ -10,11 +10,14 @@ export default {
     extend: {
       colors: {
         "light-gray": "#F8F8F8",
+        gray: "#747474",
         cyan: "#F5F8FF",
         red: "#FF6767",
         white: "#F8F8FB",
         "light-blue": "#3ABEFF",
         "very-light-blue": "#42ADE2",
+        "border-color": "#A1A3AB",
+        "body-background": "#F5F8FF",
       },
     },
   },

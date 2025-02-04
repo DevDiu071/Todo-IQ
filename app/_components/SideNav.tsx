@@ -13,7 +13,7 @@ export default function SideNav() {
   const pathname = usePathname();
   console.log(pathname);
   return (
-    <div className="bg-red  px-4 rounded-tr-md rounded-rl-md flex flex-col">
+    <div className="bg-red px-4 rounded-tr-md rounded-rl-md flex flex-col">
       <User />
       <ul className="mt-10">
         <Link href="/dashboard" className="mt-8">

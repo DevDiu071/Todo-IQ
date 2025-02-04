@@ -1,5 +1,10 @@
 import React from "react";
+import TaskView from "../_components/TaskView";
 
 export default function page() {
-  return <div>my task page</div>;
+  return (
+    <div>
+      <TaskView />
+    </div>
+  );
 }

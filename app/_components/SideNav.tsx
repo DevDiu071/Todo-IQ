@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 
 export default function SideNav() {
   const pathname = usePathname();
-  console.log(pathname);
+
   return (
     <div className="bg-red px-4 rounded-tr-md rounded-rl-md flex flex-col">
       <User />

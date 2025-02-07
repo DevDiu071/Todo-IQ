@@ -5,8 +5,11 @@ import friend1 from "@/public/friend-1.png";
 import TodoCard from "../_components/TodoCard";
 import { BiTask } from "react-icons/bi";
 import CompletedTask from "../_components/CompletedTask";
+import { getTasks } from "@/app/_lib/data-service";
 
-export default function page() {
+export default async function page() {
+  const tasks = await getTasks();
+
   return (
     <div>
       <div className="flex justify-between items-center">
@@ -45,8 +48,9 @@ export default function page() {
               </span>
               <button>Add task</button>
             </div>
-            <TodoCard />
-            <TodoCard />
+            {tasks?.map((task) => (
+              <TodoCard task={task} key={task.id} />
+            ))}
           </div>
 
           <div>

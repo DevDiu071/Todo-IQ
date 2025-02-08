@@ -6,14 +6,17 @@ import TodoCard from "../_components/TodoCard";
 import { BiTask } from "react-icons/bi";
 import CompletedTask from "../_components/CompletedTask";
 import { getTasks } from "@/app/_lib/data-service";
+import { auth } from "../_lib/auth";
 
 export default async function page() {
   const tasks = await getTasks();
+  const session = await auth();
+  const firstName = session?.user?.name?.split(" ").at(0);
 
   return (
     <div>
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Welcome back, Diu✋</h1>
+        <h1 className="text-2xl font-bold">Welcome back, {firstName}✋</h1>
 
         <div className="flex items-center gap-x-4">
           <div className="flex items-center gap-x-1">
@@ -54,7 +57,7 @@ export default async function page() {
           </div>
 
           <div>
-            <div className="shadow-lg px-6 pt-4 pb-8 rounded-md">
+            <div className="shadow-lg px-6 pt-4 pb-8 rounded-xl">
               <p>Task status</p>
               <div className="flex items-center gap-x-8 mt-10 justify-center">
                 <p>chart1</p>

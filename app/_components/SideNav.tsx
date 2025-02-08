@@ -3,18 +3,21 @@
 import React from "react";
 import Link from "next/link";
 import { BiTask } from "react-icons/bi";
-import User from "./User";
 import Signout from "./Signout";
 
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
 
-export default function SideNav() {
+interface SideNavProps {
+  children: React.ReactNode;
+}
+
+export default function SideNav({ children }: SideNavProps) {
   const pathname = usePathname();
 
   return (
     <div className="bg-red px-4 rounded-tr-md rounded-rl-md flex flex-col">
-      <User />
+      {children}
       <ul className="mt-10">
         <Link href="/dashboard" className="mt-8">
           <li

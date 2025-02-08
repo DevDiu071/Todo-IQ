@@ -1,8 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import personImage from "@/public/person.png";
+import { auth } from "../_lib/auth";
 
-export default function page() {
+export default async function page() {
+  const session = await auth();
   return (
     <div className="border-[1.5px] py-2 px-4 border-border-color rounded-xl">
       <div className="flex justify-between">
@@ -14,15 +16,19 @@ export default function page() {
       <div className="flex items-center gap-x-2 mt-6">
         <div className="relative aspect-square h-16">
           <Image
-            src={personImage}
+            src={session?.user?.image || personImage}
             fill
-            className="object-cover"
+            className="object-cover rounded-full border-[1.5px] border-red"
             alt="profile image"
           />
         </div>
         <div>
-          <p className="text-sm font-semibold">DevDiu Jr</p>
-          <p className="text-xs">devdiu@gmail.com</p>
+          <p className="text-sm font-semibold">
+            {session?.user?.name || "DevDiu Jr"}
+          </p>
+          <p className="text-xs">
+            {session?.user?.email || "devdiu@gmail.com"}
+          </p>
         </div>
       </div>
       <form className=" border-[1.5px] border-border-color p-4 rounded-lg mt-6 ">

@@ -1,9 +1,13 @@
 import React from "react";
 import Image from "next/image";
+import { signinAction } from "@/app/_lib/actions";
 
 export default function page() {
   return (
-    <div className="w-[350px] mx-auto bg-white shadow-md p-4 h-min mt-[100px]">
+    <form
+      action={signinAction}
+      className="w-[350px] mx-auto bg-white shadow-md p-4 h-min mt-[100px]"
+    >
       <h2 className="text-xl text-center font-semibold">
         Signin to start using the App
       </h2>
@@ -18,6 +22,6 @@ export default function page() {
           />
         </div>
       </button>
-    </div>
+    </form>
   );
 }

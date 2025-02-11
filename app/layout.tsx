@@ -3,7 +3,8 @@ import SideNav from "@/app/_components/SideNav";
 import Header from "@/app/_components/Header";
 import User from "./_components/User";
 import AddtaxForm from "./_components/AddtaxForm";
-import { AppStateProvider } from "./_context/AppStateContext";
+import { AppStateProvider, useAppState } from "./_context/AppStateContext";
+import Overlay from "./_components/Overlay";
 
 export default function RootLayout({
   children,
@@ -13,17 +14,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="flex relative flex-col bg-body-background h-screen">
-        {/* <div className="bg-overlay absolute top-0 left-0 h-screen w-full z-10"></div> */}
-        {/* <AddtaxForm /> */}
-        <Header />
-        <main className="grid relative flex-1 gap-x-[70px] grid-cols-[14rem_1fr] mt-8 mr-[70px]">
-          <AppStateProvider>
+        <AppStateProvider>
+          <AddtaxForm />
+          <Overlay />
+          <Header />
+          <main className="grid relative flex-1 gap-x-[70px] grid-cols-[14rem_1fr] mt-8 mr-[70px]">
             <SideNav>
               <User />
             </SideNav>
             {children}
-          </AppStateProvider>
-        </main>
+          </main>
+        </AppStateProvider>
       </body>
     </html>
   );

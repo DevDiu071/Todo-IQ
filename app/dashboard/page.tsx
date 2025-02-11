@@ -7,8 +7,8 @@ import { BiTask } from "react-icons/bi";
 import CompletedTask from "../_components/CompletedTask";
 import { getTasks } from "@/app/_lib/data-service";
 import { auth } from "../_lib/auth";
-import plus from "@/public/plus.svg";
-import { FaPlus } from "react-icons/fa";
+
+import AddTaxButton from "../_components/AddTaxButton";
 
 export default async function page() {
   const tasks = await getTasks();
@@ -51,10 +51,7 @@ export default async function page() {
               <span>
                 <p>To-Do</p>
               </span>
-              <button className="flex items-center gap-x-1">
-                <FaPlus className="w-3 h-3 text-gold" />
-                <span className="text-gray text-sm">Add task</span>
-              </button>
+              <AddTaxButton />
             </div>
             {tasks?.map((task) => (
               <TodoCard task={task} key={task.id} />

@@ -5,10 +5,10 @@ import { FaPlus } from "react-icons/fa";
 import { useAppState } from "../_context/AppStateContext";
 
 export default function AddTaxButton() {
-  const { setOpenTaskInputModal } = useAppState();
+  const { handleOpenTaskInputModal } = useAppState();
   return (
     <button
-      onClick={() => setOpenTaskInputModal(true)}
+      onClick={handleOpenTaskInputModal}
       className="flex items-center gap-x-1"
     >
       <FaPlus className="w-3 h-3 text-gold" />

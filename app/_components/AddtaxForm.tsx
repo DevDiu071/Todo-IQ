@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { useAppState } from "../_context/AppStateContext";
+import Daypicker from "./DayPicker";
 
 export default function AddtaxForm() {
   const { openTaskInputModal } = useAppState();
@@ -22,11 +23,8 @@ export default function AddtaxForm() {
                 type="text"
                 className="border-[1.5px] focus:outline-none border-border-color bg-body-background py-[2px] w-[70%] px-2 rounded-md"
               />
-              <label className="text-sm mb-1 mt-2  font-semibold">Date</label>
-              <input
-                type="text"
-                className="border-[1.5px] focus:outline-none w-[70%] border-border-color bg-body-background py-[2px] px-2 rounded-md"
-              />
+
+              <Daypicker />
               <p className="font-semibold mt-2">Priority</p>
               <div className="flex items-center gap-x-8 mt-2">
                 <div className="flex items-center gap-x-2">

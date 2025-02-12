@@ -1,11 +1,16 @@
 import React from "react";
+import { FaPlus } from "react-icons/fa";
+import CategoryItemBtn from "./CategoryItemBtn";
 
 export default function Table() {
   return (
     <div className="mb-4">
-      <p className="text-sm mb-3">
-        <span className="border-b-[1.4px] border-gold">Task</span> status
-      </p>
+      <div className="flex items-center justify-between">
+        <p className="text-sm mb-3 font-semibold">
+          <span className="border-b-[1.4px] border-gold">Task</span> status
+        </p>
+        <CategoryItemBtn />
+      </div>
       <div className="border-[1.4px] border-border-color rounded-xl">
         <div className="grid grid-cols-[50px_4fr_3fr] border-b-[1.4px] border-border-color text-sm font-semibold  text-center">
           <p className="border-r-[1.4px] border-border-color p-2">SN</p>

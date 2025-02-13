@@ -13,6 +13,7 @@ function AppStateProvider({ children }: ContextTypes) {
     useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [dateOpen, setDateOpen] = useState<boolean>(false);
+  const [selectedCheckbox, setSelectedCheckbox] = useState<null | string>(null);
 
   const handleCategoryItemForm = function () {
     setOpenCategoryItemModal(true);
@@ -36,6 +37,12 @@ function AppStateProvider({ children }: ContextTypes) {
     } else setSelectedDate(null);
   };
 
+  const handleCheckBox = function (event: React.ChangeEvent<HTMLInputElement>) {
+    const { value } = event.target;
+    setSelectedCheckbox(value);
+    console.log(value);
+  };
+
   return (
     <TasksContext.Provider
       value={{
@@ -54,6 +61,9 @@ function AppStateProvider({ children }: ContextTypes) {
         handleDateChange,
         dateOpen,
         setDateOpen,
+        selectedCheckbox,
+        setSelectedCheckbox,
+        handleCheckBox,
       }}
     >
       {children}

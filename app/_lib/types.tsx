@@ -11,6 +11,8 @@ export interface TaskInputTypes {
   openOverlay: boolean;
   selectedDate: Date | null;
   dateOpen: boolean;
+  selectedCheckbox: null | string;
+  setSelectedCheckbox: Dispatch<SetStateAction<string | null>>;
   setDateOpen: Dispatch<SetStateAction<boolean>>;
   setSelectedDate: Dispatch<SetStateAction<Date | null>>;
   setSwitchCategories: Dispatch<SetStateAction<boolean>>;
@@ -20,4 +22,5 @@ export interface TaskInputTypes {
   handleOpenTaskInputModal: () => void;
   handleCloseOverlay: () => void;
   handleDateChange: (date: Date | null) => void;
+  handleCheckBox: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }

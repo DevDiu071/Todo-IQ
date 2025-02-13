@@ -1,11 +1,12 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useAppState } from "../_context/AppStateContext";
 import Daypicker from "./DayPicker";
 
 export default function AddtaxForm() {
-  const { openTaskInputModal } = useAppState();
-  console.log(openTaskInputModal);
+  const { openTaskInputModal, handleCheckBox, selectedCheckbox } =
+    useAppState();
+
   return (
     <>
       {openTaskInputModal && (
@@ -32,6 +33,10 @@ export default function AddtaxForm() {
                   <div>
                     <input
                       type="checkbox"
+                      name="priority"
+                      checked={selectedCheckbox === "Extreme"}
+                      onChange={handleCheckBox}
+                      value="Extreme"
                       className="align-middle w-4 h-4 inline-block"
                     />
                   </div>
@@ -41,6 +46,10 @@ export default function AddtaxForm() {
                   <div>
                     <input
                       type="checkbox"
+                      name="priority"
+                      onChange={handleCheckBox}
+                      checked={selectedCheckbox === "Moderate"}
+                      value="Moderate"
                       className="align-middle w-4 h-4 inline-block"
                     />
                   </div>
@@ -52,6 +61,10 @@ export default function AddtaxForm() {
                   <div>
                     <input
                       type="checkbox"
+                      name="priority"
+                      value="low"
+                      checked={selectedCheckbox === "low"}
+                      onChange={handleCheckBox}
                       className="align-middle w-4 h-4 inline-block"
                     />
                   </div>
@@ -61,6 +74,7 @@ export default function AddtaxForm() {
               <div className="grid grid-cols-[3fr_1fr] gap-x-6 mt-2">
                 <textarea
                   rows={4}
+                  name="description"
                   className="rounded-md border-[1.5px] placeholder:text-sm py-2 px-3 border-border-color resize-none"
                   placeholder="Start writing here..."
                 ></textarea>

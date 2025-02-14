@@ -27,7 +27,7 @@ export default function TodoCard({ task }) {
         <p>
           Status: <span className="text-red">{task.status}</span>
         </p>
-        <p className="text-gray">Created on: 12/02/2025</p>
+        <p className="text-gray">Due Date: {task.date}</p>
       </div>
     </div>
   );

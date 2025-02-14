@@ -27,6 +27,7 @@ export default function Daypicker() {
             type="text"
             readOnly
             required
+            name="date"
             value={selectedDateString || ""}
             className="border-[1.5px] focus:outline-none  border-none bg-body-background py-[2px] px-2"
           />

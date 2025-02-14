@@ -2,10 +2,17 @@
 import React, { useState } from "react";
 import { useAppState } from "../_context/AppStateContext";
 import Daypicker from "./DayPicker";
+import { createTask } from "../_lib/actions";
+import SubmitTaxBtn from "./SubmitTaxBtn";
 
 export default function AddtaxForm() {
-  const { openTaskInputModal, handleCheckBox, selectedCheckbox } =
-    useAppState();
+  const {
+    openTaskInputModal,
+    handleCheckBox,
+    selectedCheckbox,
+    setOpenTaskInputModal,
+    setOpenOverlay,
+  } = useAppState();
 
   return (
     <>
@@ -17,11 +24,19 @@ export default function AddtaxForm() {
             </button>
             <p>Go back</p>
           </div>
-          <form className=" mt-5">
+          <form
+            action={async (formdata) => {
+              await createTask(formdata);
+              setOpenTaskInputModal(false);
+              setOpenOverlay(false);
+            }}
+            className=" mt-5"
+          >
             <div className="border-[1.5px] p-3 rounded-sm border-border-color flex flex-col">
               <label className="text-sm mb-1 font-semibold">Title</label>
               <input
                 type="text"
+                name="title"
                 className="border-[1.5px] focus:outline-none border-border-color bg-body-background py-[2px] w-[70%] px-2 rounded-md"
               />
 
@@ -85,9 +100,7 @@ export default function AddtaxForm() {
                 </div>
               </div>
             </div>
-            <button className="bg-gold mx-3 w-min text-white px-6 py-1.5 text-xs rounded-md mt-4">
-              Done
-            </button>
+            <SubmitTaxBtn />
           </form>
         </div>
       )}

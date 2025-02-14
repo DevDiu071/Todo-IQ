@@ -51,6 +51,7 @@ function AppStateProvider({ children }: ContextTypes) {
         switchCategories,
         setSwitchCategories,
         openOverlay,
+        setOpenOverlay,
         selectedDate,
         setSelectedDate,
         openCategoryItemModal,

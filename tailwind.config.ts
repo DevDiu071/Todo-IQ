@@ -19,6 +19,7 @@ export default {
         "border-color": "#a1a3ab9e",
         "body-background": "#F5F8FF",
         gold: "#F24E1E",
+        "gold-light": "#f24f1eac",
         overlay: "#00000088",
       },
     },

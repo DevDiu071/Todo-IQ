@@ -17,6 +17,7 @@ export interface TaskInputTypes {
   setSelectedDate: Dispatch<SetStateAction<Date | null>>;
   setSwitchCategories: Dispatch<SetStateAction<boolean>>;
   openCategoryItemModal: boolean;
+  setOpenOverlay: Dispatch<SetStateAction<boolean>>;
   setOpenCategoryItemModal: Dispatch<SetStateAction<boolean>>;
   handleCategoryItemForm: () => void;
   handleOpenTaskInputModal: () => void;

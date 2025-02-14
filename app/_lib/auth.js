@@ -41,18 +41,18 @@ const authConfig = {
       }
     },
 
-    // async session({ session }) {
-    //   try {
-    //     console.log("Session callback - session:", session);
-    //     const user = await getUser(session.user.email);
-    //     console.log("User from session:", user);
-    //     session.user.userId = user.id;
-    //     return session;
-    //   } catch (err) {
-    //     console.error("Error in session callback:", err);
-    //     return session;
-    //   }
-    // },
+    async session({ session }) {
+      try {
+        console.log("Session callback - session:", session);
+        const user = await getUser(session.user.email);
+        console.log("User from session:", user);
+        session.user.userId = user.id;
+        return session;
+      } catch (err) {
+        console.error("Error in session callback:", err);
+        return session;
+      }
+    },
   },
   pages: {
     signIn: "/signin",

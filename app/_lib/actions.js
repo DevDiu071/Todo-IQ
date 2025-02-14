@@ -1,13 +1,16 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { auth, signOut } from "./auth";
 import { signIn } from "./auth";
 import { supabase } from "./supabase";
 
-export async function createTask(prevData, formData) {
+export async function createTask(formData) {
   const session = await auth();
+
+  if (!session) throw new Error("You must be logged in!");
+
   const newTask = {
-    ...prevData,
     title: formData.get("title"),
     userId: session.user.userId,
     date: formData.get("date"),
@@ -23,6 +26,10 @@ export async function createTask(prevData, formData) {
   if (error) {
     console.error("Unable to create task");
   }
+
+  revalidatePath("/dashboard");
+
+  console.log(formData);
 }
 
 export async function createUser(newUser) {

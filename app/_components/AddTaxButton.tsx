@@ -6,6 +6,7 @@ import { useAppState } from "../_context/AppStateContext";
 
 export default function AddTaxButton() {
   const { handleOpenTaskInputModal } = useAppState();
+
   return (
     <button
       onClick={handleOpenTaskInputModal}

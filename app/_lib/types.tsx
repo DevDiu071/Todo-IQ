@@ -25,3 +25,16 @@ export interface TaskInputTypes {
   handleDateChange: (date: Date | null) => void;
   handleCheckBox: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
+export interface Task {
+  id: string;
+  title: string;
+  date: string;
+  description: string;
+  priority: string;
+  status: string;
+}
+
+export interface TaskView {
+  tasks: Task[];
+}

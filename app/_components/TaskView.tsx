@@ -2,10 +2,9 @@ import React from "react";
 import Image from "next/image";
 import cardImg from "@/public/cardImg.png";
 import TodoCard from "./TodoCard";
-import { getTasks } from "../_lib/data-service";
+import { TaskView } from "../_lib/types";
 
-export default async function TaskView() {
-  const tasks = await getTasks();
+export default async function TaskView({ tasks }: TaskView) {
   return (
     <div className="grid grid-cols-2 gap-x-4">
       <div className="border border-border-color rounded-xl px-5 py-2">

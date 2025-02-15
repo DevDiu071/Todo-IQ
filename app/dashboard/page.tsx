@@ -12,6 +12,7 @@ import AddTaxButton from "../_components/AddTaxButton";
 
 export default async function page() {
   const tasks = await getTasks();
+  const normalTasks = tasks?.filter((task) => task.priority != "Extreme");
   const session = await auth();
   const firstName = session?.user?.name?.split(" ").at(0);
 
@@ -53,7 +54,7 @@ export default async function page() {
               </span>
               <AddTaxButton />
             </div>
-            {tasks?.map((task) => (
+            {normalTasks?.map((task) => (
               <TodoCard task={task} key={task.id} />
             ))}
           </div>

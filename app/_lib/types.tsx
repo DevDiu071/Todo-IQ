@@ -19,6 +19,14 @@ export interface TaskInputTypes {
   openCategoryItemModal: boolean;
   setOpenOverlay: Dispatch<SetStateAction<boolean>>;
   setOpenCategoryItemModal: Dispatch<SetStateAction<boolean>>;
+  vitalTaskView: Task | null;
+  setVitalTaskView: Dispatch<SetStateAction<Task | null>>;
+  myTaskView: Task | null;
+  setMyTaskView: Dispatch<SetStateAction<null | Task>>;
+  selectedTaskId: number | null;
+  setSelectedTaskId: Dispatch<SetStateAction<number | null>>;
+  setSelectedVitalId: Dispatch<SetStateAction<number | null>>;
+  selectedVitalId: number | null;
   handleCategoryItemForm: () => void;
   handleOpenTaskInputModal: () => void;
   handleCloseOverlay: () => void;
@@ -33,6 +41,7 @@ export interface Task {
   description: string;
   priority: string;
   status: string;
+  created_at: string;
 }
 
 export interface TaskView {

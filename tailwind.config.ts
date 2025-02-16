@@ -21,6 +21,7 @@ export default {
         gold: "#F24E1E",
         "gold-light": "#f24f1eac",
         overlay: "#00000088",
+        "active-card": "#a1a3ab2c",
       },
     },
   },

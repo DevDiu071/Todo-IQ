@@ -7,11 +7,27 @@ import { Task } from "../_lib/types";
 
 interface TodoCard {
   task: Task;
+  onClickCard: () => void;
+  active: boolean;
+  className: string;
 }
 
-export default function TodoCard({ task }: TodoCard) {
+export default function TodoCard({
+  task,
+  onClickCard,
+  active,
+  className,
+}: TodoCard) {
   return (
-    <div className="border border-border-color py-2 px-3 rounded-2xl mt-3">
+    <div
+      onClick={onClickCard}
+      className={clsx(
+        `border border-border-color py-2 px-3 rounded-2xl mt-3 ${className}`,
+        {
+          "bg-active-card": active,
+        }
+      )}
+    >
       <div className="grid grid-cols-[5fr_1fr] items-center gap-x-6">
         <div className="flex items-start gap-x-2 ">
           <FaRegCircle

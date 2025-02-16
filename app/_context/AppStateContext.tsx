@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState } from "react";
-import { ContextTypes, TaskInputTypes } from "../_lib/types";
+import { ContextTypes, Task, TaskInputTypes } from "../_lib/types";
 
 const TasksContext = createContext<TaskInputTypes | null>(null);
 
@@ -14,6 +14,10 @@ function AppStateProvider({ children }: ContextTypes) {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [dateOpen, setDateOpen] = useState<boolean>(false);
   const [selectedCheckbox, setSelectedCheckbox] = useState<null | string>(null);
+  const [vitalTaskView, setVitalTaskView] = useState<Task | null>(null);
+  const [myTaskView, setMyTaskView] = useState<Task | null>(null);
+  const [selectedVitalId, setSelectedVitalId] = useState<number | null>(null);
+  const [selectedTaskId, setSelectedTaskId] = useState<number | null>(null);
 
   const handleCategoryItemForm = function () {
     setOpenCategoryItemModal(true);
@@ -65,6 +69,14 @@ function AppStateProvider({ children }: ContextTypes) {
         selectedCheckbox,
         setSelectedCheckbox,
         handleCheckBox,
+        vitalTaskView,
+        setVitalTaskView,
+        myTaskView,
+        setMyTaskView,
+        selectedTaskId,
+        setSelectedTaskId,
+        selectedVitalId,
+        setSelectedVitalId,
       }}
     >
       {children}

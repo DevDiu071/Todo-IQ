@@ -12,7 +12,22 @@ import AddTaxButton from "../_components/AddTaxButton";
 
 export default async function page() {
   const tasks = await getTasks();
-  const normalTasks = tasks?.filter((task) => task.priority != "Extreme");
+  const normalTasks = tasks?.filter((task) => task.vital === false);
+
+  // tasks?.forEach((data) =>
+  //   data.taskcategories.forEach((cat) => console.log(cat))
+  // );
+  tasks?.forEach((data) => {
+    console.log(data);
+    data.taskcategories.forEach((task) =>
+      console.log("TASK CATEGORIES: ", task)
+    );
+  });
+  // tasks?.forEach((data) =>
+  //   data.taskcategories.forEach((cat) => console.log("Taskcategory: ", cat))
+  // );
+
+  // const normalTasks = tasks?.filter((task) => task.priority != "Extreme");
   const session = await auth();
   const firstName = session?.user?.name?.split(" ").at(0);
 

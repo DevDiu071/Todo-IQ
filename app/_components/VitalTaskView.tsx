@@ -1,11 +1,15 @@
 "use client";
 
 import TodoCard from "./TodoCard";
-import { Task, TaskView } from "../_lib/types";
+import { Task } from "../_lib/types";
 import TaskViewRight from "./TaskViewRight";
 import { useAppState } from "../_context/AppStateContext";
 
-export default function VitalTaskView({ tasks }: TaskView) {
+interface VitalTasks {
+  tasks: Task[];
+}
+
+export default function VitalTaskView({ tasks }: VitalTasks) {
   const {
     vitalTaskView,
     setVitalTaskView,

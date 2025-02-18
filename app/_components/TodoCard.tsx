@@ -1,68 +1,89 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import cardImg from "@/public/card-image.png";
 import Image from "next/image";
 import { FaRegCircle } from "react-icons/fa";
 import clsx from "clsx";
 import { Task } from "../_lib/types";
+import { PiDotsThreeOutlineLight } from "react-icons/pi";
+import Actions from "./Actions";
 
 interface TodoCard {
   task: Task;
-  onClickCard: () => void;
-  active: boolean;
-  className: string;
+  onClickCard?: () => void;
+  active?: boolean;
+  className?: string;
 }
 
 export default function TodoCard({
   task,
-  onClickCard,
+  onClickCard = () => {},
   active,
   className,
 }: TodoCard) {
+  const [actionsOpen, setActionsOpen] = useState<boolean>(false);
   return (
     <div
-      onClick={onClickCard}
+      onClick={() => {
+        onClickCard();
+        setActionsOpen(false);
+      }}
       className={clsx(
-        `border border-border-color py-2 px-3 rounded-2xl mt-3 ${className}`,
+        `border relative border-border-color py-2 px-3 rounded-2xl mt-3 ${className}`,
         {
           "bg-active-card": active,
         }
       )}
     >
-      <div className="grid grid-cols-[5fr_1fr] items-center gap-x-6">
-        <div className="flex items-start gap-x-2 ">
-          <FaRegCircle
-            className={clsx("text-sm text-green-600", {
-              "text-red": task.status === "Not started",
-              "text-green-600": task.status === "Completed",
-              "text-blue-700": task.status === "In progress",
-            })}
-          />
-          <div className="gap-x-12 items-end">
-            <div>
-              <p className="text-sm mb-2 font-semibold">{task.title}</p>
-              <p className="mb-3 text-gray text-xs">{task.description}</p>
+      <PiDotsThreeOutlineLight
+        onClick={(e) => {
+          e.stopPropagation();
+          setActionsOpen(true);
+        }}
+        className="w-4 h-4 absolute top-0 right-0 mx-2 mt-1 cursor-pointer"
+      />
+      {actionsOpen && <Actions taskId={task.id} />}
+      <div>
+        <div className="grid grid-cols-[5fr_1fr] items-center gap-x-6">
+          <div className="flex items-start gap-x-2 ">
+            <FaRegCircle
+              className={clsx("text-sm text-green-600", {
+                "text-red": task.status === "Not started",
+                "text-green-600": task.status === "Completed",
+                "text-blue-700": task.status === "In progress",
+              })}
+            />
+            <div className="gap-x-12 items-end">
+              <div>
+                <p className="text-sm mb-2 font-semibold">{task.title}</p>
+                <p className="mb-3 text-gray text-xs">{task.description}</p>
+              </div>
             </div>
           </div>
+          <div className="relative aspect-square h-16 mt-6">
+            <Image src={cardImg} alt="card-img" fill className="object-cover" />
+          </div>
         </div>
-        <div className="relative aspect-square h-16">
-          <Image src={cardImg} alt="card-img" fill className="object-cover" />
+        <div className="flex ml-5 items-end gap-x-2 text-xs mt-2">
+          {task.taskcategories.map((category) => (
+            <p key={category.categoryvalues.value}>
+              {category.categoryvalues.categories?.name}:
+              <span
+                className={clsx("ml-[3px] font-semibold", {
+                  "text-red":
+                    category.categoryvalues.value === "Not started" ||
+                    category.categoryvalues.value === "Extreme",
+                  "text-light-blue":
+                    category.categoryvalues.value === "Moderate",
+                })}
+              >
+                {category.categoryvalues.value}
+              </span>
+            </p>
+          ))}
+          <p className="text-gray">Due Date: {task.date}</p>
         </div>
-      </div>
-      <div className="flex ml-5 items-end gap-x-2 text-xs mt-2">
-        <p>
-          Priority: <span className="text-light-blue">{task.priority}</span>
-        </p>
-        <p>
-          Status:
-          <span
-            className={clsx("text-red ml-[3px] font-semibold", {
-              "text-red": task.status === "Not started",
-            })}
-          >
-            {task.status}
-          </span>
-        </p>
-        <p className="text-gray">Due Date: {task.date}</p>
       </div>
     </div>
   );

@@ -10,26 +10,45 @@ export async function createTask(formData) {
 
   if (!session) throw new Error("You must be logged in!");
 
+  // CREATE TASK
   const newTask = {
     title: formData.get("title"),
     userId: session.user.userId,
     date: formData.get("date"),
-    priority: formData.get("priority"),
     description: formData.get("description"),
   };
 
-  const { data, error } = await supabase
+  const { data: taskData, error: taskError } = await supabase
     .from("tasks")
     .insert([newTask])
+    .select("id")
+    .single();
+
+  if (taskError) throw new Error("Unable to create task");
+
+  // CREATE VALUES
+  const { data: categoryValues, error: categoryValError } = await supabase
+    .from("categoryvalues")
+    .insert([
+      { value: formData.get("priority"), categoryId: 1 },
+      { value: "Not started", categoryId: 2 },
+    ])
     .select();
 
-  if (error) {
-    console.error("Unable to create task");
-  }
+  if (categoryValError) throw new Error("Unable to create values");
+
+  // CREATE TASKCATEGORY
+  const { error: taskCatgoriesError } = await supabase
+    .from("taskcategories")
+    .insert([
+      { taskId: taskData.id, categoryValueId: categoryValues?.[0].id },
+      { taskId: taskData.id, categoryValueId: categoryValues?.[1].id },
+    ])
+    .select();
+
+  if (taskCatgoriesError) throw new Error("unable to create task catgory");
 
   revalidatePath("/dashboard");
-
-  console.log(formData);
 }
 
 export async function createUser(newUser) {
@@ -44,6 +63,18 @@ export async function createUser(newUser) {
   }
 
   return data;
+}
+
+export async function markVital(id) {
+  const { error } = await supabase
+    .from("tasks")
+    .update({ vital: true })
+    .eq("id", id)
+    .select();
+
+  if (error) throw new Error("Unable to mark vital");
+
+  revalidatePath("/dashboard");
 }
 
 export async function getUser(email) {

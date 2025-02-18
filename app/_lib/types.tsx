@@ -37,11 +37,18 @@ export interface TaskInputTypes {
 export interface Task {
   id: string;
   title: string;
-  date: string;
   description: string;
-  priority: string;
-  status: string;
+  date: string;
+  vital: boolean;
   created_at: string;
+  taskcategories: {
+    categoryvalues: {
+      value: string;
+      categories: {
+        name: string;
+      };
+    };
+  }[];
 }
 
 export interface TaskView {

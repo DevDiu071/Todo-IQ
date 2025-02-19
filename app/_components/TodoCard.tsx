@@ -23,6 +23,11 @@ export default function TodoCard({
   className,
 }: TodoCard) {
   const [actionsOpen, setActionsOpen] = useState<boolean>(false);
+
+  const status = task.taskcategories.find(
+    (cat) => cat.categoryvalues.categories.name === "Status"
+  )?.categoryvalues.value;
+
   return (
     <div
       onClick={() => {
@@ -49,9 +54,9 @@ export default function TodoCard({
           <div className="flex items-start gap-x-2 ">
             <FaRegCircle
               className={clsx("text-sm text-green-600", {
-                "text-red": task.status === "Not started",
-                "text-green-600": task.status === "Completed",
-                "text-blue-700": task.status === "In progress",
+                "text-red": status === "Not started",
+                "text-green-600": status === "Completed",
+                "text-blue-700": status === "In progress",
               })}
             />
             <div className="gap-x-12 items-end">

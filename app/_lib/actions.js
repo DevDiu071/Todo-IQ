@@ -77,6 +77,26 @@ export async function markVital(id) {
   revalidatePath("/dashboard");
 }
 
+export async function deleteTask(id) {
+  const { error } = await supabase.from("tasks").delete().eq("id", id);
+
+  if (error) throw new Error("Unable to delete the task!");
+
+  revalidatePath("/dashboard");
+}
+
+export async function finishTask(id) {
+  const { error } = await supabase
+    .from("tasks")
+    .update({ completed: true })
+    .eq("id", id)
+    .select();
+
+  if (error) throw new Error("Unable to mark completed");
+
+  revalidatePath("/dashboard");
+}
+
 export async function getUser(email) {
   try {
     const { data, error } = await supabase

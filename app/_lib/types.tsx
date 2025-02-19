@@ -40,6 +40,7 @@ export interface Task {
   description: string;
   date: string;
   vital: boolean;
+  completed: boolean;
   created_at: string;
   taskcategories: {
     categoryvalues: {

@@ -12,7 +12,10 @@ import AddTaxButton from "../_components/AddTaxButton";
 
 export default async function page() {
   const tasks = await getTasks();
-  const normalTasks = tasks?.filter((task) => task.vital === false);
+  const normalTasks = tasks?.filter(
+    (task) => task.vital === false && task.completed === false
+  );
+  const completedTasks = tasks?.filter((task) => task.completed === true);
 
   // tasks?.forEach((data) =>
   //   data.taskcategories.forEach((cat) => console.log(cat))
@@ -89,9 +92,9 @@ export default async function page() {
                 <BiTask className="text-xl text-gray" />
                 <p className="text-red text-sm">Completed Task</p>
               </span>
-
-              <CompletedTask />
-              <CompletedTask />
+              {completedTasks?.map((task) => (
+                <CompletedTask key={task.id} task={task} />
+              ))}
             </div>
           </div>
         </div>

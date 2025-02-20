@@ -4,6 +4,7 @@ import TodoCard from "./TodoCard";
 import { Task, TaskView } from "../_lib/types";
 import TaskViewRight from "./TaskViewRight";
 import { useAppState } from "../_context/AppStateContext";
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 export default function MyTaskView({ tasks }: TaskView) {
   const { myTaskView, setMyTaskView, selectedTaskId, setSelectedTaskId } =
@@ -29,6 +30,12 @@ export default function MyTaskView({ tasks }: TaskView) {
             key={task.id}
           />
         ))}
+        {tasks?.length === 0 && (
+          <div className="flex flex-col justify-center items-center mt-[100px]">
+            <IoDocumentTextOutline className="w-[100px] h-[100px] text-border-color " />
+            <p className="text-sm text-gray">No tasks to display!</p>
+          </div>
+        )}
       </div>
       <TaskViewRight task={myTaskView} />
     </div>

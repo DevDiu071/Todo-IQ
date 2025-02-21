@@ -51,6 +51,53 @@ export async function createTask(formData) {
   revalidatePath("/dashboard");
 }
 
+export async function editTask(formData) {
+  const session = await auth();
+  const newTask = {
+    title: formData.get("title"),
+    userId: session.user.userId,
+    date: formData.get("date"),
+    description: formData.get("description"),
+  };
+
+  const taskId = formData.get("id");
+  if (taskId) console.log("************: ", taskId);
+
+  const { error: taskUpdateError } = await supabase
+    .from("tasks")
+    .update(newTask)
+    .eq("id", formData.get("id"))
+    .select();
+
+  if (taskUpdateError) throw new Error("Failed to update task!");
+
+  // FIND categoryValueId FOR PRIORITY (categoryId = 1)
+  const { data: priorityCategoryData, error: priorityError } = await supabase
+    .from("taskcategories")
+    .select("categoryValueId")
+    .eq("taskId", formData.get("id"))
+    .order("created_at", { ascending: false }) // Get the latest one
+    .limit(1)
+    .maybeSingle();
+
+  if (priorityError) throw new Error("Failed to find priority category value!");
+
+  if (!priorityCategoryData)
+    throw new Error("No priority category value found for this task!");
+
+  const priorityCategoryValueId = priorityCategoryData.categoryValueId;
+
+  // UPDATE PRIORITY CATEGORY VALUE
+  const { error: priorityUpdateError } = await supabase
+    .from("categoryvalues")
+    .update({ value: formData.get("priority") }) // Only updating value
+    .eq("id", priorityCategoryValueId)
+    .select();
+
+  if (priorityUpdateError) throw new Error("Failed to update priority value!");
+  revalidatePath("/dashboard");
+}
+
 export async function createUser(newUser) {
   const { data, error } = await supabase
     .from("users")

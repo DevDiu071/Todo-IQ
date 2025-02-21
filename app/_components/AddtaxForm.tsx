@@ -2,7 +2,7 @@
 import React from "react";
 import { useAppState } from "../_context/AppStateContext";
 import Daypicker from "./DayPicker";
-import { createTask } from "../_lib/actions";
+import { createTask, editTask } from "../_lib/actions";
 import SubmitTaxBtn from "./SubmitTaxBtn";
 
 export default function AddtaxForm() {
@@ -12,6 +12,15 @@ export default function AddtaxForm() {
     selectedCheckbox,
     setOpenTaskInputModal,
     setOpenOverlay,
+    title,
+    setTitle,
+    description,
+    setDescription,
+    setSelectedDate,
+    setSelectedCheckbox,
+    edit,
+    setEdit,
+    id,
   } = useAppState();
 
   return (
@@ -26,9 +35,24 @@ export default function AddtaxForm() {
           </div>
           <form
             action={async (formdata) => {
-              await createTask(formdata);
-              setOpenTaskInputModal(false);
-              setOpenOverlay(false);
+              if (!edit) {
+                await createTask(formdata);
+                setOpenTaskInputModal(false);
+                setOpenOverlay(false);
+                setTitle("");
+                setDescription("");
+                setSelectedDate(null);
+                setSelectedCheckbox("");
+              } else {
+                await editTask(formdata);
+                setOpenTaskInputModal(false);
+                setOpenOverlay(false);
+                setEdit(false);
+                setTitle("");
+                setDescription("");
+                setSelectedDate(null);
+                setSelectedCheckbox("");
+              }
             }}
             className=" mt-5"
           >
@@ -37,8 +61,14 @@ export default function AddtaxForm() {
               <input
                 type="text"
                 name="title"
+                value={title}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                  console.log(title);
+                }}
                 className="border-[1.5px] focus:outline-none border-border-color bg-body-background py-[2px] w-[70%] px-2 rounded-md"
               />
+              <input type="hidden" name="id" value={id} />
 
               <Daypicker />
               <p className="font-semibold mt-2">Priority</p>
@@ -90,6 +120,8 @@ export default function AddtaxForm() {
                 <textarea
                   rows={4}
                   name="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                   className="rounded-md border-[1.5px] placeholder:text-sm py-2 px-3 border-border-color resize-none"
                   placeholder="Start writing here..."
                 ></textarea>

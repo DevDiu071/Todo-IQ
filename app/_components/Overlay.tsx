@@ -5,6 +5,7 @@ import { useAppState } from "../_context/AppStateContext";
 
 export default function Overlay() {
   const { openOverlay, handleCloseOverlay } = useAppState();
+
   return (
     <>
       {openOverlay && (

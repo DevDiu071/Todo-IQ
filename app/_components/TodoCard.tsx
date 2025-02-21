@@ -48,7 +48,7 @@ export default function TodoCard({
         }}
         className="w-4 h-4 absolute top-0 right-0 mx-2 mt-1 cursor-pointer"
       />
-      {actionsOpen && <Actions taskId={task.id} />}
+      {actionsOpen && <Actions task={task} taskId={task.id} />}
       <div>
         <div className="grid grid-cols-[5fr_1fr] items-center gap-x-6">
           <div className="flex items-start gap-x-2 ">

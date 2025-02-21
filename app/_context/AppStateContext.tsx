@@ -18,6 +18,10 @@ function AppStateProvider({ children }: ContextTypes) {
   const [myTaskView, setMyTaskView] = useState<Task | null>(null);
   const [selectedVitalId, setSelectedVitalId] = useState<number | null>(null);
   const [selectedTaskId, setSelectedTaskId] = useState<number | null>(null);
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [edit, setEdit] = useState<boolean>(false);
+  const [id, setId] = useState<number | "">("");
 
   const handleCategoryItemForm = function () {
     setOpenCategoryItemModal(true);
@@ -77,6 +81,14 @@ function AppStateProvider({ children }: ContextTypes) {
         setSelectedTaskId,
         selectedVitalId,
         setSelectedVitalId,
+        title,
+        setTitle,
+        description,
+        setDescription,
+        edit,
+        setEdit,
+        setId,
+        id,
       }}
     >
       {children}

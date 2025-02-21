@@ -27,6 +27,14 @@ export interface TaskInputTypes {
   setSelectedTaskId: Dispatch<SetStateAction<number | null>>;
   setSelectedVitalId: Dispatch<SetStateAction<number | null>>;
   selectedVitalId: number | null;
+  setTitle: Dispatch<SetStateAction<string>>;
+  title: string;
+  setDescription: Dispatch<SetStateAction<string>>;
+  description: string;
+  setEdit: Dispatch<SetStateAction<boolean>>;
+  edit: boolean;
+  setId: Dispatch<SetStateAction<number | "">>;
+  id: number | "";
   handleCategoryItemForm: () => void;
   handleOpenTaskInputModal: () => void;
   handleCloseOverlay: () => void;

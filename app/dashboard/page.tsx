@@ -10,6 +10,7 @@ import { auth } from "../_lib/auth";
 
 import AddTaxButton from "../_components/AddTaxButton";
 import { IoDocumentTextOutline } from "react-icons/io5";
+import NoTasksView from "../_components/NoTasksView";
 
 export default async function page() {
   const tasks = await getTasks();
@@ -76,12 +77,7 @@ export default async function page() {
             {normalTasks?.map((task) => (
               <TodoCard task={task} key={task.id} />
             ))}
-            {normalTasks?.length === 0 && (
-              <div className="flex flex-col justify-center items-center mt-[100px]">
-                <IoDocumentTextOutline className="w-[100px] h-[100px] text-border-color " />
-                <p className="text-sm text-gray">No tasks to display!</p>
-              </div>
-            )}
+            {normalTasks?.length === 0 && <NoTasksView />}
           </div>
 
           <div>

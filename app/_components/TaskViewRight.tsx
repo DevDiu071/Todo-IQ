@@ -9,10 +9,11 @@ interface TaskViewRight {
   task: Task | null;
 }
 
-export default function TaskViewRight({ task }: TaskViewRight) {
+export default function TaskViewRight({ task, tasks }: TaskViewRight) {
+  console.log("***********: ", task);
   return (
     <div className="border border-border-color rounded-xl px-5 py-2 flex flex-col ">
-      {task ? (
+      {task !== null ? (
         <>
           <div className="flex flex-col">
             <div className="flex gap-x-4 items-end">
@@ -25,13 +26,12 @@ export default function TaskViewRight({ task }: TaskViewRight) {
                 />
               </div>
               <div className="leading-loose">
-                <p className="text-md font-semibold">{task?.title}</p>
-                <p className="text-xs leading-relaxed">
-                  Priority: <span className="text-red">{task?.priority}</span>
-                </p>
-                <p className="text-xs leading-relaxed">
-                  Status: <span className="text-red">{task?.status}</span>
-                </p>
+                {task?.taskcategories.map((category) => (
+                  <p key={category.categoryvalues.value}>
+                    {category.categoryvalues.categories?.name}:
+                    <span>{category.categoryvalues.value}</span>
+                  </p>
+                ))}
                 <p className="text-xs leading-relaxed text-gray">
                   Created on: {task?.created_at}
                 </p>

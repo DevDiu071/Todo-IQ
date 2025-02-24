@@ -1,14 +1,18 @@
 "use client";
 
 import React, { useTransition } from "react";
-import { markVital } from "../_lib/actions";
+import { markVital, removeVital } from "../_lib/actions";
 import Spinner from "./Spinner";
 
-export default function MarkVital({ taskId }: { taskId: string }) {
+export default function MarkVital({ taskId, task }: { taskId: string }) {
   const [isPending, startTransition] = useTransition();
 
   const handleVital = function () {
-    startTransition(() => markVital(taskId));
+    if (!task.vital) {
+      startTransition(() => markVital(taskId));
+    } else {
+      startTransition(() => removeVital(taskId));
+    }
   };
   return (
     <p
@@ -18,10 +22,10 @@ export default function MarkVital({ taskId }: { taskId: string }) {
       {isPending ? (
         <>
           <Spinner />
-          <span>Vital</span>
+          <span>{task.vital ? "Remove from vital" : "Vital"}</span>
         </>
       ) : (
-        "Vital"
+        `${task.vital ? "Remove from vital" : "Vital"}`
       )}
     </p>
   );

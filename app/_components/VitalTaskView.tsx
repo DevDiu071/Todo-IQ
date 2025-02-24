@@ -4,6 +4,7 @@ import TodoCard from "./TodoCard";
 import { Task } from "../_lib/types";
 import TaskViewRight from "./TaskViewRight";
 import { useAppState } from "../_context/AppStateContext";
+import NoTasksView from "./NoTasksView";
 
 interface VitalTasks {
   tasks: Task[];
@@ -37,8 +38,9 @@ export default function VitalTaskView({ tasks }: VitalTasks) {
             key={task.id}
           />
         ))}
+        {tasks.length === 0 && <NoTasksView />}
       </div>
-      <TaskViewRight task={vitalTaskView} />
+      <TaskViewRight tasks={tasks} task={vitalTaskView} />
     </div>
   );
 }

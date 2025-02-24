@@ -35,7 +35,7 @@ export default function TodoCard({
         setActionsOpen(false);
       }}
       className={clsx(
-        `border relative border-border-color py-2 px-3 rounded-2xl mt-3 ${className}`,
+        `border relative border-border-color py-2 px-3 rounded-2xl mt-1 ${className}`,
         {
           "bg-active-card": active,
         }

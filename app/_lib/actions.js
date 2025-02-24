@@ -123,6 +123,17 @@ export async function markVital(id) {
 
   revalidatePath("/dashboard");
 }
+export async function removeVital(id) {
+  const { error } = await supabase
+    .from("tasks")
+    .update({ vital: false })
+    .eq("id", id)
+    .select();
+
+  if (error) throw new Error("Unable to remove vital");
+
+  revalidatePath("/dashboard");
+}
 
 export async function deleteTask(id) {
   const { error } = await supabase.from("tasks").delete().eq("id", id);
@@ -140,6 +151,17 @@ export async function finishTask(id) {
     .select();
 
   if (error) throw new Error("Unable to mark completed");
+
+  revalidatePath("/dashboard");
+}
+export async function unfinishTask(id) {
+  const { error } = await supabase
+    .from("tasks")
+    .update({ completed: false })
+    .eq("id", id)
+    .select();
+
+  if (error) throw new Error("Unable to unfinish");
 
   revalidatePath("/dashboard");
 }

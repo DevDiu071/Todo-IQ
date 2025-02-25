@@ -186,6 +186,18 @@ export async function getUser(email) {
   }
 }
 
+export async function updateSettings(formData) {
+  const session = await auth();
+  const email = session.user.email;
+  const { data, error } = await supabase
+    .from("users")
+    .update({ contact: formData.get("contact") })
+    .eq("email", email)
+    .select();
+
+  revalidatePath("/settins");
+}
+
 export async function signinAction() {
   await signIn("google", { redirectTo: "/dashboard" });
 }

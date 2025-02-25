@@ -22,6 +22,7 @@ function AppStateProvider({ children }: ContextTypes) {
   const [description, setDescription] = useState<string>("");
   const [edit, setEdit] = useState<boolean>(false);
   const [id, setId] = useState<number | "">("");
+  const [num, setNum] = useState<string>("");
 
   const handleCategoryItemForm = function () {
     setOpenCategoryItemModal(true);
@@ -89,6 +90,8 @@ function AppStateProvider({ children }: ContextTypes) {
         setEdit,
         setId,
         id,
+        num,
+        setNum,
       }}
     >
       {children}

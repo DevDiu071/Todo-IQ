@@ -21,7 +21,7 @@ export default function MyTaskView({ tasks }: TaskView) {
     <div className="grid grid-cols-2 gap-x-4 h-[calc(100vh-6rem)]">
       <div className="border border-border-color rounded-xl px-5 py-2">
         <p className="font-semibold">
-          <span className="border-b-2 border-red">Vital</span> Tasks
+          <span className="border-b-2 border-red">My</span> Tasks
         </p>
         {tasks?.map((task) => (
           <TodoCard

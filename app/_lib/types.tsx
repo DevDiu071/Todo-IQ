@@ -35,6 +35,8 @@ export interface TaskInputTypes {
   edit: boolean;
   setId: Dispatch<SetStateAction<number | "">>;
   id: number | "";
+  num: string;
+  setNum: Dispatch<SetStateAction<string>>;
   handleCategoryItemForm: () => void;
   handleOpenTaskInputModal: () => void;
   handleCloseOverlay: () => void;

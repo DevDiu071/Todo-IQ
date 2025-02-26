@@ -23,15 +23,17 @@ export default function MyTaskView({ tasks }: TaskView) {
         <p className="font-semibold">
           <span className="border-b-2 border-red">My</span> Tasks
         </p>
-        {tasks?.map((task) => (
-          <TodoCard
-            onClickCard={() => handleClick(task)}
-            task={task}
-            active={Number(task.id) === selectedTaskId}
-            className="cursor-pointer"
-            key={task.id}
-          />
-        ))}
+        <div className="h-[400px] mt-3 overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+          {tasks?.map((task) => (
+            <TodoCard
+              onClickCard={() => handleClick(task)}
+              task={task}
+              active={Number(task.id) === selectedTaskId}
+              className="cursor-pointer"
+              key={task.id}
+            />
+          ))}
+        </div>
         {tasks?.length === 0 && (
           <div className="flex flex-col justify-center items-center mt-[100px]">
             <IoDocumentTextOutline className="w-[100px] h-[100px] text-border-color " />

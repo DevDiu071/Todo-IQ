@@ -54,7 +54,7 @@ export default function TaskViewRight({ task, tasks }: TaskViewRight) {
             </ol>
           </div>
 
-          <div className="flex items-center gap-x-2 flex-1  justify-end mt-[120px]">
+          <div className="flex items-center gap-x-2 flex-1  justify-end mt-[105px]">
             <button>
               <svg
                 className="w-5 h-5 fill-white bg-red p-1 rounded-sm"

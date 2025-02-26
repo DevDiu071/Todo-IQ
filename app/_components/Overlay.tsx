@@ -11,7 +11,7 @@ export default function Overlay() {
       {openOverlay && (
         <div
           onClick={handleCloseOverlay}
-          className="bg-overlay absolute top-0 left-0 right-0 h-screen w-full z-10"
+          className="bg-overlay absolute top-0 left-0 right-0 h-screen w-full z-20"
         ></div>
       )}
     </>

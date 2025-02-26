@@ -65,19 +65,21 @@ export default async function page() {
           </button>
         </div>
       </div>
-      <div className="border border-border-color mt-4 px-4 py-3">
+      <div className="border border-border-color mt-3 px-4 py-2">
         <div className="grid grid-cols-2 gap-x-5 mt-1 ">
-          <div className="shadow-md px-5 pt-1 pb-8 rounded-md">
+          <div className="shadow-md px-5 pt-1 pb-4 rounded-md">
             <div className="flex justify-between">
               <span>
                 <p>To-Do</p>
               </span>
               <AddTaxButton />
             </div>
-            {normalTasks?.map((task) => (
-              <TodoCard task={task} key={task.id} />
-            ))}
-            {normalTasks?.length === 0 && <NoTasksView />}
+            <div className="h-[350px] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+              {normalTasks?.map((task) => (
+                <TodoCard task={task} key={task.id} />
+              ))}
+              {normalTasks?.length === 0 && <NoTasksView />}
+            </div>
           </div>
 
           <div>
@@ -95,9 +97,11 @@ export default async function page() {
                 <BiTask className="text-xl text-gray" />
                 <p className="text-red text-sm">Completed Task</p>
               </span>
-              {completedTasks?.map((task) => (
-                <CompletedTask key={task.id} task={task} />
-              ))}
+              <div className="h-[190px] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+                {completedTasks?.map((task) => (
+                  <CompletedTask key={task.id} task={task} />
+                ))}
+              </div>
             </div>
           </div>
         </div>

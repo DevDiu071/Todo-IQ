@@ -39,7 +39,7 @@ export default async function page() {
       </div>
       <form
         action={updateSettings}
-        className=" border-[1.5px] border-border-color p-4 rounded-lg mt-6 "
+        className=" border-[1.5px] border-border-color p-4 rounded-lg mt-4 "
       >
         <div className="flex flex-col max-w-[550px]">
           <label className="text-sm mb-1 font-semibold">First Name</label>

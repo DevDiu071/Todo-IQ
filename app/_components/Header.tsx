@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function Header() {
   return (
-    <div className="bg-light-gray flex items-center justify-around shadow-sm py-3">
+    <div className="bg-light-gray h-15 fixed top-0 right-0 w-full z-10 flex items-center justify-around shadow-sm py-3">
       <Link href="/">
         <h1 className="text-2xl font-semibold">
           <span className="text-red">Dash</span>board

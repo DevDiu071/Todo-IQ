@@ -14,17 +14,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex relative flex-col bg-body-background h-screen">
+      <body className="flex relative flex-col bg-body-background">
         <AppStateProvider>
           <AddtaxForm />
           <Overlay />
           <AddCategoryValueForm />
           <Header />
-          <main className="grid relative flex-1 gap-x-[70px] grid-cols-[14rem_1fr] mt-8 mr-[70px]">
+          <main className="grid h-[calc(100vh-5rem)] relative flex-1 gap-x-[70px] grid-cols-[14rem_1fr] mt-[90px] mr-[70px]">
             <SideNav>
               <User />
             </SideNav>
-            {children}
+            <div className="relative w-[950px] ml-[250px]">{children}</div>
           </main>
         </AppStateProvider>
       </body>

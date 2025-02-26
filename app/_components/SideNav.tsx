@@ -16,7 +16,7 @@ export default function SideNav({ children }: SideNavProps) {
   const pathname = usePathname();
 
   return (
-    <div className="bg-red px-4 rounded-tr-md rounded-rl-md flex flex-col">
+    <div className="bg-red fixed left-0 w-[200px] h-screen top-[100px] px-4 rounded-tr-md rounded-rl-md flex flex-col">
       {children}
       <ul className="mt-10">
         <Link href="/dashboard" className="mt-8">
@@ -99,34 +99,7 @@ export default function SideNav({ children }: SideNavProps) {
             </span>
           </li>
         </Link>
-        <Link href="/task-categories" className="mt-8">
-          <li
-            className={clsx(
-              "flex items-center gap-x-2 px-2 py-2 rounded-lg mb-2",
-              { "bg-white": pathname === "/task-categories" }
-            )}
-          >
-            <svg
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              className={clsx("w-4 h-4", {
-                "fill-red": pathname === "/task-categories",
-                "fill-white": pathname != "/task-categories",
-              })}
-            >
-              <path d="M9.65329 19.7143H24V21.4286H9.65329V19.7143ZM2.65414 20.5714L0.0102479 22.7829L1.45517 24L5.55423 20.5714L1.45517 17.1429L0 18.3514L2.65414 20.5714ZM9.65329 11.1429H24V12.8571H9.65329V11.1429ZM2.65414 12L0.0102479 14.2114L1.45517 15.4286L5.55423 12L1.45517 8.57143L0 9.78L2.65414 12ZM9.65329 2.57143H24V4.28571H9.65329V2.57143ZM2.65414 3.42857L0.0102479 5.64L1.45517 6.85714L5.55423 3.42857L1.45517 0L0 1.20857L2.65414 3.42857Z" />
-            </svg>
 
-            <span
-              className={clsx("text-sm", {
-                "text-red": pathname === "/task-categories",
-                "text-white": pathname != "/task-categories",
-              })}
-            >
-              Categories
-            </span>
-          </li>
-        </Link>
         <Link href="/settings" className="mt-8">
           <li
             className={clsx(

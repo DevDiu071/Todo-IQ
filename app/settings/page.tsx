@@ -12,7 +12,7 @@ export default async function page() {
   const firstName = fullName.split(" ").at(0);
   const secondName = fullName.split(" ").at(1);
   return (
-    <div className="border-[1.5px] py-2 px-4 border-border-color rounded-xl">
+    <div className="border-[1.5px] max-w-[380px] sm:max-w-[1000px] -ml-4 py-2 px-4 border-border-color rounded-xl">
       <div className="flex justify-between">
         <p className="text-md font-semibold">
           <span className="border-b-2 border-red">Account</span> Information
@@ -39,7 +39,7 @@ export default async function page() {
       </div>
       <form
         action={updateSettings}
-        className=" border-[1.5px] border-border-color p-4 rounded-lg mt-4 "
+        className=" sm:border-[1.5px] border-border-color p-4 rounded-lg mt-4 "
       >
         <div className="flex flex-col max-w-[550px]">
           <label className="text-sm mb-1 font-semibold">First Name</label>

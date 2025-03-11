@@ -18,7 +18,7 @@ export default function CompletedTask({ task }: CompletedTask) {
   return (
     <div
       onClick={() => setActionsOpen(false)}
-      className="border relative grid grid-cols-[5fr_1fr] items-center gap-x-4 border-border-color py-1 px-3 rounded-2xl mt-3"
+      className="border max-w-[370px] relative grid grid-cols-[5fr_1fr] items-center gap-x-4 border-border-color py-1 px-3 rounded-2xl mt-3"
     >
       <PiDotsThreeOutlineLight
         onClick={(e) => {
@@ -33,7 +33,9 @@ export default function CompletedTask({ task }: CompletedTask) {
         <div className="gap-x-12 items-end">
           <div>
             <p className="text-sm mb-1 font-semibold">{task.title}</p>
-            <p className="mb-2 text-gray text-xs">{task.description}</p>
+            <p className="mb-2 text-gray text-xs">
+              {task.description.slice(0, 60)}
+            </p>
             <p className="text-xs mb-1">
               Status:
               <span className="text-green-600">

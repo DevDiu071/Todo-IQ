@@ -38,7 +38,7 @@ export default async function page() {
 
   return (
     <div>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between flex-wrap items-center">
         <h1 className="text-2xl font-bold">Welcome back, {firstName}✋</h1>
 
         <div className="flex items-center gap-x-4">
@@ -65,16 +65,17 @@ export default async function page() {
           </button>
         </div>
       </div>
-      <div className="border border-border-color mt-3 px-4 py-2">
-        <div className="grid grid-cols-2 gap-x-5 mt-1 ">
-          <div className="shadow-md px-5 pt-1 pb-4 rounded-md">
-            <div className="flex justify-between">
+
+      <div className="sm:border border-border-color  sm:mx-0 mt-3 sm:px-4 py-2">
+        <div className="grid grid-cols-1 xs:grid-cols-2 gap-x-5 mt-1">
+          <div className="sm:shadow-md -ml-2.5 sm:ml-0 sm:px-5 pt-1 pb-4 rounded-md">
+            <div className="flex sm:justify-between gap-x-[230px]">
               <span>
-                <p>To-Do</p>
+                <p className="text-lg">To-Do</p>
               </span>
               <AddTaxButton />
             </div>
-            <div className="h-[350px] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+            <div className="sm:h-[350px] overflow-y-auto sm:[&::-webkit-scrollbar]:hidden sm:[-ms-overflow-style:'none'] [scrollbar-width:'none']">
               {normalTasks?.map((task) => (
                 <TodoCard task={task} key={task.id} />
               ))}
@@ -83,7 +84,7 @@ export default async function page() {
           </div>
 
           <div>
-            <div className="shadow-lg px-6 pt-4 pb-8 rounded-xl">
+            <div className="shadow-lg px-6 pt-4 -ml-2.5 pb-8 rounded-xl">
               <p>Task status</p>
               <div className="flex items-center gap-x-8 mt-10 justify-center">
                 <p>chart1</p>
@@ -92,12 +93,12 @@ export default async function page() {
               </div>
             </div>
 
-            <div className="shadow-md px-10 pt-4 pb-8 mt-2 rounded-md ">
+            <div className="sm:shadow-md sm:px-10 pt-4 pb-8 mt-2 rounded-md ">
               <span className="flex items-center gap-x-1">
                 <BiTask className="text-xl text-gray" />
                 <p className="text-red text-sm">Completed Task</p>
               </span>
-              <div className="h-[190px] overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
+              <div className="sm:h-[190px] -ml-2.5 sm:overflow-y-auto sm:[&::-webkit-scrollbar]:hidden sm:[-ms-overflow-style:'none'] [scrollbar-width:'none']">
                 {completedTasks?.map((task) => (
                   <CompletedTask key={task.id} task={task} />
                 ))}

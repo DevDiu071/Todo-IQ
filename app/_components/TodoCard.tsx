@@ -35,7 +35,7 @@ export default function TodoCard({
         setActionsOpen(false);
       }}
       className={clsx(
-        `border mb-2 relative border-border-color py-2 px-3 rounded-2xl mt-1 ${className}`,
+        `border max-w-[370px] sm:max-w-[400px] mb-2 relative border-border-color py-2 px-3 rounded-2xl mt-1 ${className}`,
         {
           "bg-active-card": active,
         }
@@ -49,9 +49,9 @@ export default function TodoCard({
         className="w-4 h-4 absolute top-0 right-0 mx-2 mt-1 cursor-pointer"
       />
       {actionsOpen && <Actions task={task} taskId={task.id} />}
-      <div>
-        <div className="grid grid-cols-[5fr_1fr] items-center gap-x-6">
-          <div className="flex items-start gap-x-2 ">
+      <div className="">
+        <div className="grid sm:grid-cols-[5fr_1fr] grid-cols-[2fr_70px] items-center gap-x-6">
+          <div className="flex w-full items-start ">
             <FaRegCircle
               className={clsx("text-sm text-green-600", {
                 "text-red": status === "Not started",
@@ -61,18 +61,26 @@ export default function TodoCard({
             />
             <div className="gap-x-12 items-end">
               <div>
-                <p className="text-sm mb-2 font-semibold">{task.title}</p>
-                <p className="mb-3 text-gray text-xs">{task.description}</p>
+                <p className="sm:text-sm text-xl mb-2 font-semibold">
+                  {task.title}
+                </p>
+                <p className="mb-3 text-lg text-gray sm:text-xs">
+                  {task.description.slice(0, 40)}
+                </p>
               </div>
             </div>
           </div>
-          <div className="relative aspect-square h-16 mt-6">
+
+          <div className="relative aspect-square h-16 sm:h-16 mt-6">
             <Image src={cardImg} alt="card-img" fill className="object-cover" />
           </div>
         </div>
-        <div className="flex ml-5 items-end gap-x-2 text-xs mt-2">
+        <div className="flex flex-wrap ml-2 sm:ml-5 items-end gap-x-2 text-xs mt-2">
           {task.taskcategories.map((category) => (
-            <p key={category.categoryvalues.value}>
+            <p
+              className="text-lg sm:text-xs"
+              key={category.categoryvalues.value}
+            >
               {category.categoryvalues.categories?.name}:
               <span
                 className={clsx("ml-[3px] font-semibold", {
@@ -87,7 +95,7 @@ export default function TodoCard({
               </span>
             </p>
           ))}
-          <p className="text-gray">Due Date: {task.date}</p>
+          <p className="text-gray sm:text-sm text-lg">Due Date: {task.date}</p>
         </div>
       </div>
     </div>

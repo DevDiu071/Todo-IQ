@@ -13,7 +13,7 @@ export default function AddTaxButton() {
       className="flex items-center gap-x-1"
     >
       <FaPlus className="w-3 h-3 text-gold" />
-      <span className="text-gray text-sm">Add task</span>
+      <span className="text-gray text-lg sm:text-sm">Add task</span>
     </button>
   );
 }

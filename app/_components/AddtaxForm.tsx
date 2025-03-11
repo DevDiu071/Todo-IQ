@@ -26,7 +26,7 @@ export default function AddtaxForm() {
   return (
     <>
       {openTaskInputModal && (
-        <div className="absolute top-1/2 left-1/2 z-30 transform -translate-x-1/2 -translate-y-1/2 p-5 w-[600px] rounded-md bg-white">
+        <div className="absolute sm:top-1/2 top-[300px] left-1/2 z-30 transform -translate-x-1/2 -translate-y-1/2 p-5 w-[390px] sm:w-[600px] rounded-md bg-white">
           <div className="flex justify-between items-center">
             <button className="font-semibold">
               <span className="border-b-2 border-gold">Add new</span> task
@@ -116,7 +116,7 @@ export default function AddtaxForm() {
                 </div>
               </div>
               <p className="font-semibold mt-2">Task description</p>
-              <div className="grid grid-cols-[3fr_1fr] gap-x-6 mt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-[3fr_1fr] gap-x-6 mt-2">
                 <textarea
                   rows={4}
                   name="description"

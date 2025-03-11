@@ -7,6 +7,11 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      md: "1000px",
+      sm: "700px",
+      xs: "600px",
+    },
     extend: {
       colors: {
         "light-gray": "#F8F8F8",

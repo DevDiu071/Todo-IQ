@@ -16,7 +16,7 @@ export default function Header() {
         <input
           type="text"
           placeholder="search your task here"
-          className="w-[600px] py-[2px] px-4 rounded-lg bg-cyan shadow-md placeholder:text-xs placeholder:flex placeholder:items-center"
+          className="w-[600px] py-[2px] hidden xs:block px-4 rounded-lg bg-cyan shadow-md placeholder:text-xs placeholder:flex placeholder:items-center"
         />
       </div>
       <div className="flex items-center gap-x-4">

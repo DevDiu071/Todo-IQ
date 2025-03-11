@@ -10,9 +10,8 @@ interface TaskViewRight {
 }
 
 export default function TaskViewRight({ task, tasks }: TaskViewRight) {
-  console.log("***********: ", task);
   return (
-    <div className="border border-border-color rounded-xl px-5 py-2 flex flex-col ">
+    <div className="border ml-4 mr-6 pr-5 mb-6 border-border-color rounded-xl px-5 py-2 flex flex-col ">
       {task !== null ? (
         <>
           <div className="flex flex-col">

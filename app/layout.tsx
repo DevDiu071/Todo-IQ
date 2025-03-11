@@ -6,6 +6,7 @@ import AddtaxForm from "./_components/AddtaxForm";
 import { AppStateProvider, useAppState } from "./_context/AppStateContext";
 import Overlay from "./_components/Overlay";
 import AddCategoryValueForm from "./_components/AddCategoryValueForm";
+import TabletSideNav from "./_components/TabletSideNav";
 
 export default function RootLayout({
   children,
@@ -20,11 +21,14 @@ export default function RootLayout({
           <Overlay />
           <AddCategoryValueForm />
           <Header />
-          <main className="grid h-[calc(100vh-5rem)] relative flex-1 gap-x-[70px] grid-cols-[14rem_1fr] mt-[90px] mr-[70px]">
+          <main className="md:grid h-[calc(100vh-5rem)] md:relative md:flex-1 md:gap-x-[70px] md:grid-cols-[14rem_1fr] mt-[90px] md:mr-[70px]">
             <SideNav>
               <User />
             </SideNav>
-            <div className="relative w-[950px] ml-[250px]">{children}</div>
+            <TabletSideNav />
+            <div className="relative w-[950px] ml-5 sm:ml-[100px] md:ml-[250px]">
+              {children}
+            </div>
           </main>
         </AppStateProvider>
       </body>

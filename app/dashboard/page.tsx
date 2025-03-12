@@ -11,6 +11,7 @@ import { auth } from "../_lib/auth";
 import AddTaxButton from "../_components/AddTaxButton";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import NoTasksView from "../_components/NoTasksView";
+import Chart from "../_components/Chart";
 
 export default async function page() {
   const tasks = await getTasks();
@@ -84,12 +85,10 @@ export default async function page() {
           </div>
 
           <div>
-            <div className="shadow-lg px-6 pt-4 -ml-2.5 pb-8 rounded-xl">
+            <div className="shadow-lg px-3 pt-4 -ml-2.5 pb-2 rounded-xl">
               <p>Task status</p>
-              <div className="flex items-center gap-x-8 mt-10 justify-center">
-                <p>chart1</p>
-                <p>chart2</p>
-                <p>chart3</p>
+              <div className="flex  items-center gap-x-2 justify-center">
+                <Chart tasks={tasks} />
               </div>
             </div>
 

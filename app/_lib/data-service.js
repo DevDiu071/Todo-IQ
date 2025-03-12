@@ -16,6 +16,8 @@ export const getTasks = async function () {
     description,
     date,
     vital,
+    inProgress,
+    notStarted,
     created_at,
     completed,
     taskcategories (

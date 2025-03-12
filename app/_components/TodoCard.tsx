@@ -89,9 +89,13 @@ export default function TodoCard({
                     category.categoryvalues.value === "Extreme",
                   "text-light-blue":
                     category.categoryvalues.value === "Moderate",
+                  "text-blue": task.inProgress,
                 })}
               >
-                {category.categoryvalues.value}
+                {category.categoryvalues.categories?.name === "Status" &&
+                task.inProgress
+                  ? "In progress"
+                  : category.categoryvalues.value}
               </span>
             </p>
           ))}

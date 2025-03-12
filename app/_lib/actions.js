@@ -146,7 +146,7 @@ export async function deleteTask(id) {
 export async function finishTask(id) {
   const { error } = await supabase
     .from("tasks")
-    .update({ completed: true })
+    .update({ completed: true, notStarted: true, inProgress: false })
     .eq("id", id)
     .select();
 
@@ -154,6 +154,19 @@ export async function finishTask(id) {
 
   revalidatePath("/dashboard");
 }
+
+export async function startTask(id) {
+  const { error } = await supabase
+    .from("tasks")
+    .update({ inProgress: true })
+    .eq("id", id)
+    .select();
+
+  if (error) throw new Error("Unable to mark completed");
+
+  revalidatePath("/dashboard");
+}
+
 export async function unfinishTask(id) {
   const { error } = await supabase
     .from("tasks")

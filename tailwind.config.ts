@@ -20,6 +20,7 @@ export default {
         red: "#FF6767",
         white: "#F8F8FB",
         "light-blue": "#3ABEFF",
+        blue: "#0000FF",
         "very-light-blue": "#42ADE2",
         "border-color": "#a1a3ab9e",
         "body-background": "#F5F8FF",
